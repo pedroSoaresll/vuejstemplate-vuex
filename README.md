@@ -1,6 +1,6 @@
-# admin-rubia-vue
+# vue com vuex + sass
 
-> Admin Rubia com Rubia.js
+> Vuejs template + vuex + sass
 
 ## Build Setup
 
