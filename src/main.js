@@ -7,6 +7,10 @@ import router from './router'
 import 'es6-promise/auto'
 import store from './store/index'
 
+// css dependence
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.js'
+
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
