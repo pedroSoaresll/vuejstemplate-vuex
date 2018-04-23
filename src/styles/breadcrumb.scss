@@ -1,0 +1,40 @@
+@import './constants.scss';
+
+.breadcrumb-list {
+  background-color: $backgroundColorBreadcrumb;
+  list-style-type: none;
+  font-size: $fontSizeSmall;
+  height: $layoutBreadcrumbHeight;
+
+  li {
+    position: relative;
+    padding: 10px 15px;
+    color: $colorGrey;
+    cursor: default;
+
+    a {
+      color: $colorGrey;
+    }
+
+    &.active {
+      color: $colorGreyDark;
+    }
+
+    &:last-child:before {
+      display: none;
+    }
+
+    &:not(:last-child):before {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 15px;
+      width: 9px;
+      height: 9px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url('./../assets/icons/svg/chevron-right.svg');
+      opacity: .3;
+    }
+  }
+}

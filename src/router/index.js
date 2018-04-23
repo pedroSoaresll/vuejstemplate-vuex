@@ -9,12 +9,40 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
+      name: 'AdminInterface',
       component: InterfaceAdmin,
       children: [
         {
           path: '/home',
           name: 'AdminHome',
+        },
+        {
+          path: '/vendedores',
+          name: "AdminVendedores",
+        },
+        {
+          path: '/transacoes-na-maquininha',
+          name: "AdminTransaçõesNaMaquininha",
+        },
+        {
+          path: '/pedidos',
+          name: "AdminPedidos",
+        },
+        {
+          path: '/taxas-e-tarifas',
+          name: "AdminTaxasTarifas",
+        },
+        {
+          path: '/taxas-e-tarifas-street',
+          name: "AdminTaxasTarifasStreet",
+        },
+        {
+          path: '/financeiro',
+          name: "AdminFinanceiro",
+        },
+        {
+          path: '/configuracoes',
+          name: "AdminConfiguracoes",
         }
       ]
     }

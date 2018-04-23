@@ -1,23 +1,26 @@
 <template>
-  <div class="main-topbar">
-		topbar aqui
-
+  <div class="main-topbar w-100 text-white d-flex justify-content-end align-items-center">
 		<!-- Item Menu -->
-		<slot class="area-item-menu" name="item-menu"></slot>
-
+		<div class="area-item-menu col-md-11">
+			<slot name="item-menu"></slot>
+		</div>
+		
 		<!-- Sign Out -->
-		<slot class="area-sign-out" name="sign-out"></slot>
+		<div class="area-sign-out col-md-1">
+			<a class="link text-white" href="#">
+				<span>Sair</span>
+				<span class="oi oi-account-logout"></span>
+			</a>
+		</div>
 	</div>
 </template>
 
 <script>
-export default {
-  
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
-@import './../styles/topbar.scss';
+@import "./../styles/topbar.scss";
 </style>
 
 

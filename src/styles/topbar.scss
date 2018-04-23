@@ -1,2 +1,34 @@
 @import './_constants.scss';
 
+.main-topbar {
+  height: $layoutTopbarHeight;
+  padding: 0 20px;
+  background-color: $colorPurpleLight;
+  font-size: $fontSizeSmall;
+
+  .area-item-menu {
+    text-align: right;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+
+      li {
+        margin: 0 10px;
+
+        &.link {
+          &:hover {
+            opacity: .8;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .area-sign-out {
+    border-left: 1px solid $colorPurple;
+    border-right: 1px solid transparent;
+    text-align: center;
+  }
+}

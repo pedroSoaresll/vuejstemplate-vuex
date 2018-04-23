@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.0",
+    "bootstrap-vue": "^2.0.0-rc.8",
     "es6-promise": "^4.2.4",
     "jquery": "^3.3.1",
+    "npm": "^5.8.0",
     "popper.js": "^1.14.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
