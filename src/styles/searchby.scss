@@ -1,0 +1,30 @@
+@import './_constants';
+
+.salesman-search-main {
+  .salesman-select {
+    font-size: $fontSizeSmall;
+
+    &.not-null {
+      background-color: $colorPurpleLight;
+      color: #fff;
+    }
+  }
+
+  .salesman-input-search {
+    font-size: $fontSizeSmall;
+  }
+  
+  .button-submit {
+    background-color: $colorPurpleLight;
+    color: #fff;
+    font-size: $fontSizeSmall;
+
+    &.btn-secondary:active {
+      background-color: $colorPurple;
+    }
+
+    &.btn-secondary:focus {
+      box-shadow: 0 0 0 0.2rem $colorPurpleLight;
+    }
+  }
+}

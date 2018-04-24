@@ -48,18 +48,8 @@ export default {
 	data: () => ({
 		breadCrumb: []
 	}),
-
-	mounted () {
-		this.breadCrumb = [{
-			text: 'Admin',
-			href: '#'
-		}, {
-			text: 'Manage',
-			href: '#'
-		}, {
-			text: 'Library',
-			active: true
-		}]
+	created () {
+		this.$store.commit('breadcrumb/reset')
 	}
 };
 </script>

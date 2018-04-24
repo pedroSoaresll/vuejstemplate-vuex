@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import InterfaceAdmin from '@/components/Interface'
 
+// pages
+import HomePage from '@/components/pages/Home'
+
 Vue.use(Router)
 
 export default new Router({
@@ -15,6 +18,7 @@ export default new Router({
         {
           path: '/home',
           name: 'AdminHome',
+          component: HomePage
         },
         {
           path: '/vendedores',

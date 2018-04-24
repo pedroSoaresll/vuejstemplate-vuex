@@ -1,0 +1,20 @@
+@import './_constants.scss';
+
+.content {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+
+  .content-header {
+    padding: 8px 15px;
+    background-color: #FAFAFA;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    font-size: $fontSizeNormal;
+    color: $colorGrey;
+  }
+
+  .content-main {
+    padding: 20px 15px;
+  }
+}
