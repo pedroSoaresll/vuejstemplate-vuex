@@ -1,56 +1,36 @@
 <template>
   <div class="salesman-search-main">
-    <b-form class="row">
-      <b-input-group class="col-md-9">
-        <b-form-select ref="salesmanSelect" @change="onChange" class="col-md-4 salesman-select" v-model="selected" :options="options" />
-
-        <b-form-input class="col-md-7 salesman-input-search" rel="salesmanInput" />
-      </b-input-group>
-      
-      <b-button class="col-md-2 button-submit">Pesquisar</b-button>
-    </b-form>  
+    <search :self="this" :options="options" />
   </div>
 </template>
 
 <script>
-const ID_PEDIDO_STELO = 'id-pedido-stelo'
-const CANAL = 'canal'
-const CEP = 'cep'
-const DOCUMENTO_COMPRADOR = 'document-comprador'
-const NOME_RESPONSAVEL_VENDA = 'nome-responsavel-venda'
+import Search from './Search'
 
 export default {
+  components: {
+    Search
+  },
   data: () => ({
-    selected: null,
     options: [
       { value: null, text: 'Tipo de pesquisa' },
-      { value: ID_PEDIDO_STELO, text: 'Id Pedido Stelo' },
-      { value: CANAL, text: 'Canal' },
-      { value: CEP, text: 'CEP' },
-      { value: DOCUMENTO_COMPRADOR, text: 'Doc. do Comprador' },
-      { value: NOME_RESPONSAVEL_VENDA, text: 'Nome do Responsável pela Venda' },
-    ]
+      { value: 'id-pedido-stelo', text: 'Id Pedido Stelo' },
+      { value: 'canal', text: 'Canal' },
+      { value: 'cep', text: 'CEP' },
+      { value: 'document-comprador', text: 'Doc. do Comprador' },
+      { value: 'nome-responsavel-venda', text: 'Nome do Responsável pela Venda' },
+    ],
   }),
   methods: {
-    onChange (value) {
-      let elSelect = this.$refs.salesmanSelect.$el
-      let elInput = this.$el.querySelector('.salesman-input-search')
-
-      console.log(value)
-
-      elSelect.classList.remove('not-null')
-
-      if (value != null && value != "") {
-        elSelect.classList.add('not-null')
-        elInput.focus()
-      }
+    callbackSearch (json) {
+      console.log(`search order callback: ${json}`)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import './../styles/searchby';
+
 </style>
 
 
