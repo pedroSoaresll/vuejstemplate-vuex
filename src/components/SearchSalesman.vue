@@ -22,8 +22,10 @@ export default {
     ],
   }),
   methods: {
-    callbackSearch (json) {
-      console.log(`search salesman callback: ${json}`)
+    callbackSearch (objectSearchString) {
+      // console.log(`search salesman callback: ${encodeURI(objectSearchString.type)}`)
+      this.$router
+        .push({ path: `/home/pesquisa-vendedores/type:${encodeURI(objectSearchString.type)},value:${encodeURI(objectSearchString.value)}` })
     }
   }
 }

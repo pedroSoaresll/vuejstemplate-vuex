@@ -26,6 +26,11 @@ const mutations = {
     state.paths.push(objectPath)
   },
 
+  remove (state, classPath) {
+    state.paths
+      .filter(path => path.text != classPath.text)
+  },
+
   create (state, arrayObjectPaths) {
     if (!arrayObjectPaths.length) throw Error("Deve informar uma lista válida")
     

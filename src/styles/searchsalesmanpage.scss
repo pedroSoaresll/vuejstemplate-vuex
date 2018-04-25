@@ -1,0 +1,17 @@
+@import './_constants.scss';
+
+.search-salesman-main {
+  .text-title {
+    color: $colorGrey;
+  }
+
+  .text-specific-filter {
+    color: $colorGrey;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: $colorGreyLight;
+  }
+}

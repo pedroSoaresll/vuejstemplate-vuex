@@ -1,0 +1,42 @@
+@import './_constants.scss';
+
+.search-salesman-table {
+  border-collapse: separate;
+  border-spacing: 0 20px;
+
+  thead .table-column th {
+    cursor: default;
+    padding: 0 15px;
+    color: $colorGrey;
+    font-weight: bold;
+  }
+
+  tbody .table-value {
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px transparent;
+    transition: .2s ease;
+    
+    &:hover {
+      box-shadow: 0px 2px 3px $colorGreyLight;
+    }
+
+    td {
+      padding: 10px 15px;
+      color: $colorGrey;
+      font-weight: bold;
+      font-size: $fontSizeNormal;
+
+      &:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
   <div class="main-leftmenu">
 		<!-- header -->
 		<header class="header-menu d-flex justify-content-center">
-			<img src="./../assets/logo.png" alt="Logo Stelo Beta">
+			<img src="./../assets/logo-stelo-admin.svg" alt="Logo Stelo Beta">
 		</header>
 
 		<!-- menu list -->

@@ -47,7 +47,10 @@ export default {
           throw Error("Informe o que deseja pesquisar.")
         }
 
-        this.self.callbackSearch('{"message": "ola mundo"}')
+        this.self.callbackSearch({
+          type: this.searchSelect,
+          value: this.searchInput
+        })
       } catch (e) {
         // preparar mensagem de erro na tela para o usuário
         console.error(e.message)
