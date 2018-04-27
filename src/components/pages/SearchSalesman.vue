@@ -24,7 +24,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <b-button variant="outline-primary" size="md">Voltar</b-button>
+        <b-button @click="$router.go(-1)" variant="outline-primary" size="md">Voltar</b-button>
       </div>
 
       <div class="col-md-6 d-flex justify-content-end">
@@ -48,6 +48,7 @@ export default {
     PTable
   },
   data: () => ({
+    searchSalesmanPath: null,
     searchSalesmanPath: null,
     items: [
       { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
@@ -83,18 +84,16 @@ export default {
   methods: {
     callbackClickPTable (data) {
       // console.log(`Evento do PTable:`, data)
-      this.$router.push({ name: 'AdminDetail', params: {idDetail: `${location.href}/${data.id}`} })
+      this.$router.push({ name: 'Detalhe', params: {
+          id_detail: data.id
+        }
+      })
     }
   },
   created () {
-    const homePath = new Path('Home', '#/home/', false)
-    const searchSalesmanPath = new Path('Pesquisa Vendedores', '#/home/pesquisa-vendedores', true)
-
-    this.$store.commit('breadcrumb/create', [
-      homePath.getObject(),
-      searchSalesmanPath.getObject()
-    ])
-  }
+    const search_type = this.$route.params.search_type
+    const search_value = this.$route.params.search_value
+  },
 }
 </script>
 

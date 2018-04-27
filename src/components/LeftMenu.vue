@@ -22,7 +22,7 @@ export default {
       {
         name: "Home",
         link: "/home",
-        linkName: "AdminHome",
+        linkName: "Home",
         activated: true
       },
       {

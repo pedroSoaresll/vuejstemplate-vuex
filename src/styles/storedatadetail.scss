@@ -1,0 +1,17 @@
+@import './_constants.scss';
+
+.store-data-detail-main {
+  .store-data-table {
+    border-collapse: separate;
+    border-spacing: 0 5px;
+  }
+
+  .store-data-table thead tr th {
+    padding: 0 15px;
+    color: $colorGrey;
+  }
+
+  .store-data-table tbody tr td {
+    padding: 0 15px;
+  }
+}

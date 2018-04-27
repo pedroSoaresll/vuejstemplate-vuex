@@ -1,6 +1,12 @@
 <template>
 	<div>
-		<b-breadcrumb class="d-flex align-items-center justify-content-start breadcrumb-list col-md-12" :items="items"></b-breadcrumb>
+		<ol class="d-flex align-items-center justify-content-start breadcrumb breadcrumb-list col-md-12">
+			<li v-for="item of items" 
+				:key="item.name"
+				:class="{'active': item.active}"
+				:title="item.nivel"
+				@click="item.goBack($router, $store)">{{ item.name }} {{ item.nivel}}</li>
+		</ol>
 	</div>
 </template>
 
@@ -8,7 +14,8 @@
 export default {
 	computed: {
 		items () {
-			return this.$store.getters['breadcrumb/paths']
+			let listPaths =  this.$store.getters['breadcrumb/paths']
+			return listPaths.length ? listPaths.map(path => path.getObject()) : []
 
 			// this.breadCrumb = [{
 			//   text: 'Admin',

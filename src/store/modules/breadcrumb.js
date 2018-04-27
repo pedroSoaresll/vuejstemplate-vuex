@@ -1,8 +1,44 @@
 // functions
-function validatePath (path) {
-  if (!path.text) throw Error("Deve informar {text}")
+function validatePath (state, path) {
+  if (!path.name) throw Error("Deve informar {name}")
   if (!path.href) throw Error("Deve informar {href}")
-  if (path.active == undefined) throw Error("Deve informar {active}")
+}
+
+function setActiveFalse (listPaths) {
+  return listPaths.map(path => {
+    path.active = false
+    return path
+  })
+}
+
+function sortPaths (listPaths) {
+  return listPaths.map((path, index) => {
+    path.nivel = (index - listPaths.length) + 1
+
+    return path
+  })
+}
+
+function exists (state, path) {
+  const existPath = state.paths.filter(statePath => statePath.name == path.name)
+  return new Boolean(existPath.length).valueOf()
+}
+
+function remove (state, classPath) {
+  let index = 0
+
+  // console.log('procurando..')
+  // console.log(path)
+  // console.log(classPath)
+  // console.log(index)
+  // console.log(state.paths.length)
+
+  const a = state.paths.map((path, index) => {
+    if (index !== 0) return false
+    if (path.name == classPath.name) index = 1
+    
+    return path
+  })
 }
 
 
@@ -21,21 +57,25 @@ const mutations = {
     state.paths = []
   },
 
-  add (state, objectPath) {
-    validatePath(objectPath)
-    state.paths.push(objectPath)
+  add (state, classPath) {
+    validatePath(state, classPath)
+
+    state.paths = setActiveFalse(state.paths)
+
+    !exists(state, classPath) ? state.paths.push(classPath) : remove(state, classPath)
+
+    state.paths = sortPaths(state.paths)
   },
 
   remove (state, classPath) {
-    state.paths
-      .filter(path => path.text != classPath.text)
+    remove(state, classPath)
   },
 
-  create (state, arrayObjectPaths) {
-    if (!arrayObjectPaths.length) throw Error("Deve informar uma lista válida")
+  create (state, listPaths) {
+    if (!listPaths.length) throw Error("Deve informar uma lista válida")
     
-    arrayObjectPaths.forEach(path => validatePath(path))
-    state.paths = arrayObjectPaths
+    listPaths.forEach(path => validatePath(state, path))
+    state.paths = listPaths
   }
 }
 

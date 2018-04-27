@@ -1,42 +1,53 @@
 export default class Path {
-  constructor (text, href, active=false) {
-    this.setText(text)
-    this.setHref(href)
-    this.setActive(active)
+  constructor (name, href) {
+    this.name = name
+    this.href = href
   }
 
-  get text () {
-    return this._text
+  get name () {
+    return this._name
+  }
+
+  set name (name) {
+    if (!name || name == "") throw Erro("Deve informar {name}")
+    this._name = name
   }
 
   get href () {
     return this._href
   }
 
-  get active () {
-    return this._active
-  }
-
-  setText (text) {
-    if (!text || text == "") throw Erro("Deve informar {text}")
-    this._text = text
-  }
-
-  setHref (href) {
+  set href (href) {
     if (!href || href == "") throw Erro("Deve informar {href}")
     this._href = href
   }
 
-  setActive (active) {
+  get active () {
+    return this._active
+  }
+
+  set active (active) {
     if (active == undefined) throw Error("Deve informar {active}")
     this._active = active
   }
 
+  get nivel () {
+    return this._nivel
+  }
+
+  set nivel (number) {
+    this._nivel = number
+  }
+
   getObject () {
     return {
-      text: this._text,
+      name: this._name,
       href: this._href,
-      active: this._active
+      active: this._active,
+      nivel: this._nivel,
+      goBack: (router, store) => {
+        router.go(this._nivel)
+      }
     }
   }
 }

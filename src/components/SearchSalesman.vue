@@ -25,7 +25,11 @@ export default {
     callbackSearch (objectSearchString) {
       // console.log(`search salesman callback: ${encodeURI(objectSearchString.type)}`)
       this.$router
-        .push({ path: `/home/pesquisa-vendedores/type:${encodeURI(objectSearchString.type)},value:${encodeURI(objectSearchString.value)}` })
+        .push({ name: 'PesquisaVendedores', params: {
+            search_type: encodeURI(objectSearchString.type),
+            search_value: encodeURI(objectSearchString.value)
+          }
+        })
     }
   }
 }

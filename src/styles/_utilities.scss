@@ -1,0 +1,28 @@
+@import './_constants.scss';
+
+// font size
+.font-size-default {
+  font-size: $fontSizeNormal;
+}
+
+// colors
+.color-grey {
+  color: $colorGrey;
+}
+.text-color-purple {
+  color: $colorPurple;
+}
+
+// line
+.divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $colorGreyLight;
+  margin: 40px 0;
+}
+
+// icon size
+.icon-small {
+  font-size: $fontSizeSmall;
+}

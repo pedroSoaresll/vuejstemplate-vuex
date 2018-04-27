@@ -12,6 +12,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import './assets/icons/css/open-iconic-bootstrap.css'
+import './styles/_utilities.scss'
 
 Vue.use(Vuex)
 Vue.use(BootstrapVue)

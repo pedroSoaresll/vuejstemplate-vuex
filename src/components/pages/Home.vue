@@ -45,10 +45,7 @@ export default {
     SearchOrder
   },
   created () {
-    const homePath = new Path('Home', '/home', true)
-    this.$store.commit('breadcrumb/create', [
-      homePath.getObject()
-    ])
+    
   }
 }
 </script>

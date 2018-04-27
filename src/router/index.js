@@ -6,10 +6,12 @@ import InterfaceAdmin from '@/components/Interface'
 // pages
 import HomePage from '@/components/pages/Home'
 import SearchSalesmanPage from '@/components/pages/SearchSalesman'
+import DocumentDetailPage from '@/components/pages/DocumentDetail'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -18,19 +20,19 @@ export default new Router({
       children: [
         {
           path: '/home',
-          name: 'AdminHome',
-          component: HomePage
+          name: 'Home',
+          component: HomePage,
         },
-          {
-            path: '/home/pesquisa-vendedores/:search_string',
-            name: 'AdminPesquisaVendedores',
-            component: SearchSalesmanPage
-          },
-          {
-            path: '/home/pesquisa-vendedores/:search_string/:idDetail',
-            name: 'AdminDetail',
-            // component
-          },
+        {
+          path: '/home/pesquisa-vendedores/:search_type,:search_value',
+          name: 'PesquisaVendedores',
+          component: SearchSalesmanPage,
+        },
+        {
+          path: '/home/pesquisa-vendedores/documento/:id_detail',
+          name: 'Detalhe',
+          component: DocumentDetailPage
+        },
         {
           path: '/vendedores',
           name: "AdminVendedores",

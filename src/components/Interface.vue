@@ -39,6 +39,10 @@
 import Topbar from "@/components/Topbar";
 import LeftMenu from "@/components/LeftMenu";
 import BreadCrumb from "@/components/BreadCrumb";
+
+// 
+import Path from './../models/Path'
+
 export default {
   components: {
     Topbar,
@@ -50,7 +54,21 @@ export default {
 	}),
 	created () {
 		this.$store.commit('breadcrumb/reset')
-	}
+	},
+	beforeRouteUpdate (to, from, next) {
+		// console.log('route to: ', to)
+		// console.log('route from', from)
+
+		// const toPath = new Path(to.name, to.path)
+		// const fromPath = new Path(from.name, from.path)
+
+		// console.log(toPath)
+		// console.log(fromPath)
+
+		// this.$store.commit('breadcrumb/add', toPath)
+		
+		return next()
+	},
 };
 </script>
 
