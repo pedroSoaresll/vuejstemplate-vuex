@@ -8,11 +8,14 @@ import 'es6-promise/auto'
 import store from './store/index'
 import BootstrapVue from 'bootstrap-vue'
 
-// css dependence
+// css dependences
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
 import './assets/icons/css/open-iconic-bootstrap.css'
-import './styles/_utilities.scss'
+import './styles/utilities/_utilities.scss'
+
+// js dependences
+import 'bootstrap/dist/js/bootstrap.js'
+import 'jquery-maskmoney/dist/jquery.maskMoney.js'
 
 Vue.use(Vuex)
 Vue.use(BootstrapVue)

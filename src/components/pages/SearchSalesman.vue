@@ -7,27 +7,27 @@
     </div>
 
     <div class="row">
-      <div class="col-md-8 filtros-vendedores mb-4">
+      <div class="col-md-8 filtros-vendedores mb-3">
         <span class="text-specific-filter d-block mb-1">Filtros Específicos</span>
         <search-salesman />
       </div>
     </div>
 
-    <div class="divider mb-1"></div>
+    <div class="divider"></div>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12" v-if="searchType !== '' && searchValue !== ''">
         <!-- table here -->
         <p-table :self="this" :data="resultData" class="w-100"></p-table>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <b-button @click="$router.go(-1)" variant="outline-primary" size="md">Voltar</b-button>
+    <div class="row" v-if="searchType !== '' && searchValue !== ''">
+      <div class="col-md-3">
+        <button-back></button-back>
       </div>
 
-      <div class="col-md-6 d-flex justify-content-end">
+      <div class="col-md-9 d-flex justify-content-end">
         <b-pagination size="md" :total-rows="pagination.totalRows" v-model="pagination.currentPage" :per-page="pagination.perPage"></b-pagination>
       </div>
     </div>
@@ -36,26 +36,21 @@
 
 <script>
 // components
-import SearchSalesman from './../SearchSalesman'
-import PTable from './../PTable'
+import SearchSalesman from '@/components/search-salesman/SearchSalesman'
+import PTable from '@/components/shared/PTable'
+import ButtonBack from '@/components/shared/ButtonBack'
 
 // models
-import Path from './../../models/Path'
+import Path from '@/models/Path'
 
 export default {
   components: {
     SearchSalesman,
-    PTable
+    PTable,
+    ButtonBack
   },
   data: () => ({
     searchSalesmanPath: null,
-    searchSalesmanPath: null,
-    items: [
-      { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-      { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-      { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-      { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney' }
-    ],
     resultData: {
       columnsName: ['ID Vendedor', 'CPF/CNPJ', 'Nome Fantasia', 'Razão Social', 'Responsável'],
       rowsName: [
@@ -79,7 +74,9 @@ export default {
       currentPage: 1,
       totalRows: 100,
       perPage: 2
-    }
+    },
+    search_type: '',
+    search_value: ''
   }),
   methods: {
     callbackClickPTable (data) {
@@ -88,12 +85,32 @@ export default {
           id_detail: data.id
         }
       })
+    },
+
+    clearSearch () {
+      this.$store.commit('searchsalesman/addType', '')
+      this.$store.commit('searchsalesman/addValue', '')
     }
   },
-  created () {
-    const search_type = this.$route.params.search_type
-    const search_value = this.$route.params.search_value
+
+  computed: {
+    searchType () {
+      return this.$store.getters['searchsalesman/type']
+    },
+
+    searchValue () {
+      return this.$store.getters['searchsalesman/value']
+    }
   },
+
+  created () {
+    this.$route.params.search_type ? this.$store.commit('searchsalesman/addType', this.$route.params.search_type) : false
+    this.$route.params.search_value ? this.$store.commit('searchsalesman/addValue', this.$route.params.search_value) : false
+  },
+
+  destroyed () {
+    this.clearSearch()
+  }
 }
 </script>
 

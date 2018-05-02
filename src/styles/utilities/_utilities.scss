@@ -1,0 +1,48 @@
+@import './../constants/_constants.scss';
+
+// font size
+.font-size-default {
+  font-size: $fontSizeNormal;
+}
+
+// colors
+.color-grey {
+  color: $colorGrey;
+}
+.text-color-purple {
+  color: $colorPurple;
+}
+
+// line
+.divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $colorGreyLight;
+  margin: 40px 0;
+}
+
+// icon size
+.icon-small {
+  font-size: $fontSizeSmall;
+}
+
+// buttons
+.button-purple {
+  background-color: $colorPurpleLight;
+  color: #fff;
+  font-size: $fontSizeSmall;
+
+  &.btn-secondary:active {
+    background-color: $colorPurple !important;
+    box-shadow: 0 0 0 0.2rem $colorPurple !important;
+  }
+
+  &.btn-secondary:focus {
+    box-shadow: 0 0 0 0.2rem $colorPurpleLight;
+  }
+
+  &.btn-secondary:hover {
+    background-color: $colorPurpleLight
+  }
+}

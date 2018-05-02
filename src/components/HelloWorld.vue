@@ -99,7 +99,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import './../styles/_main.scss';
+@import '@/styles/_main.scss';
 
 h1, h2 {
   font-weight: normal;

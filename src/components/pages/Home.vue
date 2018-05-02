@@ -29,13 +29,13 @@
 
 <script>
 // components
-import Content from './../Content'
-import SearchSalesman from './../SearchSalesman'
-import SearchTransaction from './../SearchTransaction'
-import SearchOrder from './../SearchOrder'
+import Content from '@/components/shared/Content'
+import SearchSalesman from '@/components/search-salesman/SearchSalesman'
+import SearchTransaction from '@/components/search-transaction/SearchTransaction'
+import SearchOrder from '@/components/search-order/SearchOrder'
 
 // models
-import Path from './../../models/Path'
+import Path from '@/models/Path'
 
 export default {
   components: {

@@ -2,7 +2,7 @@
   <div class="document-detail-main">
     <div class="row">
       <div class="col-md-12 mb-4">
-        <h5 class="text-title">Definir titulo automatizado</h5>
+        <h5 class="text-title font-weight-bold">PARQUE DA BOLA</h5>
       </div>
     </div>
 
@@ -19,12 +19,13 @@
     <div class="row">
       <div class="col-md-12 mb-5">
         <div class="card mb-4">
-          <div class="card-header" id="headingOne">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <h5 class="mb-0">
               <button class="btn btn-link document-detail-button-toggle" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Dados Cadastrais
               </button>
             </h5>
+            <i class="oi oi-chevron-bottom icon-small mr-2" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></i>
           </div>
 
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -37,12 +38,13 @@
         </div>
         
         <div class="card mb-4">
-          <div class="card-header" id="headingtwo">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center" id="headingtwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <h5 class="mb-0">
               <button class="btn btn-link document-detail-button-toggle" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 Usuários
               </button>
             </h5>
+            <i class="oi oi-chevron-bottom icon-small mr-2" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"></i>
           </div>
 
           <div id="collapseTwo" class="collapse" aria-labelledby="headingtwo" data-parent="#accordion">
@@ -55,12 +57,13 @@
         </div>
 
         <div class="card mb-4">
-          <div class="card-header" id="headingThree">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <h5 class="mb-0">
               <button class="btn btn-link document-detail-button-toggle" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                 Pedido 1
               </button>
             </h5>
+            <i class="oi oi-chevron-bottom icon-small mr-2" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"></i>
           </div>
 
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
@@ -73,12 +76,13 @@
         </div>
 
         <div class="card mb-4">
-          <div class="card-header" id="headingFour">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
             <h5 class="mb-0">
               <button class="btn btn-link document-detail-button-toggle" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                 Taxas e Tarifas
               </button>
             </h5>
+            <i class="oi oi-chevron-bottom icon-small mr-2" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour"></i>
           </div>
 
           <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
@@ -89,18 +93,13 @@
             </div>
           </div>
         </div>
-        
-        
+
+        <!-- button back -->
         <div class="row">
           <div class="col-md-3">
-            <b-button @click="$router.go(-1)" variant="light" size="md" class="text-color-purple w-50">
-              <i class="oi oi-chevron-left icon-small mr-2"></i>
-              <span>Voltar</span>
-            </b-button>
+            <button-back></button-back>
           </div>
         </div>
-          
-        
       </div>
     </div>
   </div>
@@ -108,10 +107,11 @@
 
 <script>
 // components
-import StoreDataDetail from './../StoreDataDetail'
-import StoreUsersDetail from './../StoreUsersDetail'
-import StoreOrderDetail from './../StoreOrderDetail'
-import StoreRatesDetail from './../StoreRatesDetail'
+import StoreDataDetail from '@/components/store-detail/StoreDataDetail'
+import StoreUsersDetail from '@/components/store-detail/StoreUsersDetail'
+import StoreOrderDetail from '@/components/store-detail/StoreOrderDetail'
+import StoreRatesDetail from '@/components/store-detail/StoreRatesDetail'
+import ButtonBack from '@/components/shared/ButtonBack'
 
 // models
 import Path from './../../models/Path'
@@ -121,7 +121,8 @@ export default {
     StoreDataDetail,
     StoreUsersDetail,
     StoreOrderDetail,
-    StoreRatesDetail
+    StoreRatesDetail,
+    ButtonBack
   },
   data: () => ({
     documentDetailPath: null
@@ -133,7 +134,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './../../styles/documentdetail.scss'
+@import '@/styles/documentdetail.scss'
 </style>
 
 
