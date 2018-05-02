@@ -1,0 +1,17 @@
+@import './constants/_constants.scss';
+
+.p-card {
+  border-radius: 8px;
+  border: 1px solid $colorGreyLight;
+
+  .header {
+    padding: 15px;
+    color: $colorGrey;
+    border-bottom: 1px solid $colorGreyLight;
+  }
+
+  .content {
+    padding: 15px;
+    margin-top: 10px;
+  }
+}

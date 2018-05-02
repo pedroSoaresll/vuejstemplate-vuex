@@ -1,0 +1,10 @@
+// colors
+.color-grey {
+  color: $colorGrey;
+}
+.text-color-grey {
+  @extend .color-grey;
+}
+.text-color-purple {
+  color: $colorPurple;
+}

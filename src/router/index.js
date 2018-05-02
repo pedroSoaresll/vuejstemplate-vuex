@@ -8,6 +8,8 @@ import HomePage from '@/components/pages/Home'
 import SearchSalesmanPage from '@/components/pages/SearchSalesman'
 import DocumentDetailPage from '@/components/pages/DocumentDetail'
 import SearchMachineTransaction from '@/components/pages/SearchMachineTransaction'
+import TransactionMachineDetail from '@/components/pages/TransactionMachineDetail'
+import Historic from '@/components/pages/Historic'
 
 Vue.use(Router)
 
@@ -43,6 +45,16 @@ export default new Router({
           path: '/transacoes-na-maquininha',
           name: "TransacoesMaquininha",
           component: SearchMachineTransaction
+        },
+        {
+          path: '/transacoes-na-maquininha/referencia/:id/detalhe',
+          name: 'TransacoesMaquininhaDetalhe',
+          component: TransactionMachineDetail
+        },
+        {
+          path: 'historico/:id',
+          name: 'Historico',
+          component: Historic
         },
         {
           path: '/pedidos',

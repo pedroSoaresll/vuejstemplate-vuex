@@ -69,6 +69,7 @@ export default {
     },
     onClickTableItem (data) {
       console.log('on click table item', data)
+      this.$router.push({name: 'TransacoesMaquininhaDetalhe', params: {id: data.idPedidoStelo}})
     }
   },
   computed: {

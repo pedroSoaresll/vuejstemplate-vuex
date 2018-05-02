@@ -1,16 +1,14 @@
 @import './../constants/_constants.scss';
 
+// text colors
+@import './text-colors.scss';
+
+// text sizes
+@import './text-sizes.scss';
+
 // font size
 .font-size-default {
   font-size: $fontSizeNormal;
-}
-
-// colors
-.color-grey {
-  color: $colorGrey;
-}
-.text-color-purple {
-  color: $colorPurple;
 }
 
 // line
