@@ -7,8 +7,8 @@
     </thead>
 
     <tbody>
-      <tr class="table-value" v-for="(rowName, indexTr) of data.rowsName" :key="indexTr" @click="self.callbackClickPTable(rowName)">
-        <td v-for="(name, indexTd) of Object.keys(rowName)" :key="indexTd">{{ rowName[name] }}</td>
+      <tr class="table-value" v-for="(rowName, indexTr) of data.rowsName" :key="indexTr">
+        <td @click="onClick(rowName)" v-for="(name, indexTd) of Object.keys(rowName)" :key="indexTd">{{ rowName[name] }}</td>
       </tr>
     </tbody>
   </table>
@@ -18,8 +18,11 @@
 export default {
   props: ['self', 'data'],
   data: () => ({
-
+    
   }),
+  methods: {
+    onClick (data) { this.$emit('clickItem', data) }
+  }
 }
 </script>
 

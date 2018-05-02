@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-md-12" v-if="searchType !== '' && searchValue !== ''">
         <!-- table here -->
-        <p-table :self="this" :data="resultData" class="w-100"></p-table>
+        <p-table :self="this" v-on:clickItem="callbackClickPTableItem" :data="resultData" class="w-100"></p-table>
       </div>
     </div>
 
@@ -79,7 +79,7 @@ export default {
     search_value: ''
   }),
   methods: {
-    callbackClickPTable (data) {
+    callbackClickPTableItem (data) {
       // console.log(`Evento do PTable:`, data)
       this.$router.push({ name: 'Detalhe', params: {
           id_detail: data.id

@@ -18,7 +18,7 @@
     <!-- tabela -->
     <div class="row mt-2">
       <div class="col-md-12">
-        <p-table class="w-100" :self="this" :data="resultData"></p-table>
+        <p-table class="w-100" v-on:clickItem="onClickTableItem" :data="resultData"></p-table>
       </div>
     </div>
 
@@ -64,11 +64,11 @@ export default {
     }
   }),
   methods: {
-    callbackClickPTable () {
-      console.log('item da tabela clicado!')
-    },
     onClickDownload () {
       console.log('botão download clicado')
+    },
+    onClickTableItem (data) {
+      console.log('on click table item', data)
     }
   },
   computed: {
