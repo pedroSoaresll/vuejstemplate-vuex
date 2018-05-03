@@ -8,11 +8,11 @@
 
     <div class="row mb-4">
       <div class="col-md-2">
-        <b-button class="button-white">Ver Transações</b-button>
+        <b-button class="button-white" @click="$router.push({name: 'TransacoesMaquininhaDetalhe', params: {id: '10001'}})">Ver Transações</b-button>
       </div>
 
       <div class="col-md-2">
-        <b-button class="button-white">Ver Histórico</b-button>
+        <b-button class="button-white" @click="$router.push({name: 'Historico', params: {id: '00200'}})">Ver Histórico</b-button>
       </div>
     </div>
 
@@ -96,7 +96,7 @@
 
         <!-- button back -->
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <button-back></button-back>
           </div>
         </div>

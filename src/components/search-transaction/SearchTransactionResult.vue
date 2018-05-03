@@ -24,11 +24,11 @@
 
     <!-- paginação e botão voltar -->
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
         <button-back></button-back>
       </div>
 
-      <div class="col-md-9 d-flex justify-content-end">
+      <div class="col-md-10 d-flex justify-content-end">
         <b-pagination size="md" :total-rows="pagination.totalRows" v-model="pagination.currentPage" :per-page="pagination.perPage"></b-pagination>
       </div>
     </div>
