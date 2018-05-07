@@ -33,10 +33,35 @@ export default {
     SearchTransactionResult
   },
 
+  methods: {
+    /**
+      * Limpa os históricos de consulta
+      * @return {void}
+      */
+    clearSearch () {
+      console.log('paramtros limpados')
+      // this.$store.commit('searchtransaction/addType', '');
+      // this.$store.commit('searchtransaction/addValue', '');
+    },
+
+    /** 
+     * Verifica se existe parametros de consulta na URL
+     * @return {boolean}
+     */
+    isURLSearch () {
+      return this.$route.params.search_type && this.$route.params.search_value
+    }
+  },
+
   mounted () {
-    // caso existir os parametros de query, informar na store[searchtransaction]
-    this.$route.params.search_type ? this.$store.commit('searchtransaction/addType', this.$route.params.search_type) : false
-    this.$route.params.search_value ? this.$store.commit('searchtransaction/addValue', this.$route.params.search_value) : false
+    if (this.isURLSearch()) {
+      this.$store.commit('searchtransaction/addType', this.$route.params.search_type)
+      this.$store.commit('searchtransaction/addValue', this.$route.params.search_value)
+    }
+  },
+
+  beforeDestroy () {
+    this.clearSearch()
   }
 }
 </script>

@@ -47,12 +47,13 @@ export default new Router({
 
         // pesquisa por transações na maquininha
         {
-          path: '/transacoes-na-maquininha/:search_type,:search_value',
-          name: "TransacoesMaquininha",
-          component: SearchMachineTransaction
-        },{
           path: '/transacoes-na-maquininha',
           name: "TransacoesMaquininha",
+          component: SearchMachineTransaction
+        },
+        {
+          path: '/transacoes-na-maquininha/:search_type,:search_value',
+          name: "TransacoesMaquininhaConsulta",
           component: SearchMachineTransaction
         },
         {

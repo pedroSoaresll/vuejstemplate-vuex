@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-md-12" v-if="searchType !== '' && searchValue !== ''">
         <!-- table here -->
-        <p-table :self="this" v-on:clickItem="callbackClickPTableItem" :data="resultData" class="w-100"></p-table>
+        <p-table v-on:clickItem="callbackClickPTableItem" :data="resultData" class="w-100"></p-table>
       </div>
     </div>
 
@@ -43,12 +43,16 @@ import ButtonBack from '@/components/shared/ButtonBack'
 // models
 import Path from '@/models/Path'
 
+// mixins
+import storemixins from '@/mixins/StoreMixins'
+
 export default {
   components: {
     SearchSalesman,
     PTable,
     ButtonBack
   },
+  mixins: [storemixins],
   data: () => ({
     searchSalesmanPath: null,
     resultData: {
@@ -79,6 +83,11 @@ export default {
     search_value: ''
   }),
   methods: {
+    /**
+     * callback click no item da tabela
+     * 
+     * @param {string} data Json { id: 123 }
+     */
     callbackClickPTableItem (data) {
       // console.log(`Evento do PTable:`, data)
       this.$router.push({ name: 'Detalhe', params: {
@@ -87,6 +96,21 @@ export default {
       })
     },
 
+    /** 
+      * Adiciona parametros de consulta na store searchsalesman
+      * @param {string} search_type
+      * @param {string} search_value
+      * @return {void}
+     */
+    addSearch (search_type, search_value) {
+      this.$route.params.search_type ? this.$store.commit('searchsalesman/addType', search_type) : false
+      this.$route.params.search_value ? this.$store.commit('searchsalesman/addValue', search_value) : false
+    },
+
+    /**
+      * Limpa os históricos de consulta
+      * @return {void}
+      */
     clearSearch () {
       this.$store.commit('searchsalesman/addType', '')
       this.$store.commit('searchsalesman/addValue', '')
@@ -104,8 +128,10 @@ export default {
   },
 
   created () {
-    this.$route.params.search_type ? this.$store.commit('searchsalesman/addType', this.$route.params.search_type) : false
-    this.$route.params.search_value ? this.$store.commit('searchsalesman/addValue', this.$route.params.search_value) : false
+    const search_type =  this.$route.params.search_type;
+    const search_value = this.$route.params.search_value;
+
+    this.addSearch(search_type, search_value)
   },
 
   destroyed () {

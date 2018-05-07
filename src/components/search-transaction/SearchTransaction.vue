@@ -82,7 +82,7 @@ export default {
       this.$store.commit('searchtransaction/addValue', data.value)
 
       this.$router
-        .push({ name: 'TransacoesMaquininha', params: {
+        .push({ name: 'TransacoesMaquininhaConsulta', params: {
             search_type: encodeURI(data.type),
             search_value: encodeURI(data.value)
           }
@@ -102,7 +102,7 @@ export default {
       } catch (e) {
         console.error(e.message)
       }
-    }
+    },
   },
 
   beforeDestroy () {
