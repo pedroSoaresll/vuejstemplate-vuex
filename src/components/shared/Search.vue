@@ -49,7 +49,15 @@ export default {
           throw Error("Informe o que deseja pesquisar.")
         }
 
-        this.self.callbackSearch({
+        // legado
+        if (this.self && this.self.callbackSearch !== undefined) {
+          this.self.callbackSearch({
+            type: this.searchSelect,
+            value: this.searchInput
+          })
+        }
+
+        this.$emit('searchSubmit', {
           type: this.searchSelect,
           value: this.searchInput
         })

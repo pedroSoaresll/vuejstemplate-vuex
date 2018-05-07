@@ -10,6 +10,7 @@ import DocumentDetailPage from '@/components/pages/DocumentDetail'
 import SearchMachineTransaction from '@/components/pages/SearchMachineTransaction'
 import TransactionMachineDetail from '@/components/pages/TransactionMachineDetail'
 import Historic from '@/components/pages/Historic'
+import SearchOrder from '@/components/pages/SearchOrder'
 
 Vue.use(Router)
 
@@ -26,6 +27,8 @@ export default new Router({
           name: 'Home',
           component: HomePage,
         },
+
+        // pesquisa vendedores
         {
           path: '/pesquisa-vendedores',
           name: 'PesquisaVendedoresMain',
@@ -41,7 +44,13 @@ export default new Router({
           name: 'Detalhe',
           component: DocumentDetailPage
         },
+
+        // pesquisa por transações na maquininha
         {
+          path: '/transacoes-na-maquininha/:search_type,:search_value',
+          name: "TransacoesMaquininha",
+          component: SearchMachineTransaction
+        },{
           path: '/transacoes-na-maquininha',
           name: "TransacoesMaquininha",
           component: SearchMachineTransaction
@@ -56,22 +65,33 @@ export default new Router({
           name: 'Historico',
           component: Historic
         },
+
+        // pedido
         {
           path: '/pedidos',
           name: "AdminPedidos",
+          component: SearchOrder
         },
+
+        // taxas e tarifas
         {
           path: '/taxas-e-tarifas',
           name: "AdminTaxasTarifas",
         },
+
+        // taxas e tarifas street
         {
           path: '/taxas-e-tarifas-street',
           name: "AdminTaxasTarifasStreet",
         },
+
+        // financeiro
         {
           path: '/financeiro',
           name: "AdminFinanceiro",
         },
+
+        // configuração
         {
           path: '/configuracoes',
           name: "AdminConfiguracoes",

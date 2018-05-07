@@ -2,7 +2,7 @@
   <div class="salesman-search-main">
     <div class="row">
       <div :class="{'col-md-8': showMore, 'col-md-12': !showMore}">
-        <search :self="this" :options="options" v-on:clearsearch="clearResults" />
+        <search v-on:searchSubmit="searchSubmit" :options="options" v-on:clearsearch="clearResults" />
       </div>
     </div>
 
@@ -72,19 +72,19 @@ export default {
     elPrice: null
   }),
   methods: {
-    callbackSearch (objectSearchString) {
-      // console.log(`search salesman callback: ${encodeURI(objectSearchString.type)}`)
+    searchSubmit (data) {
+      console.log('resultado search:', data)
 
-      if (!objectSearchString.type || objectSearchString.type == '') return
-      if (!objectSearchString.value || objectSearchString.value == '') return
+      if (!data.type || data.type == '') return
+      if (!data.value || data.value == '') return
 
-      this.$store.commit('searchtransaction/addType', objectSearchString.type)
-      this.$store.commit('searchtransaction/addValue', objectSearchString.value)
+      this.$store.commit('searchtransaction/addType', data.type)
+      this.$store.commit('searchtransaction/addValue', data.value)
 
       this.$router
         .push({ name: 'TransacoesMaquininha', params: {
-            search_type: encodeURI(objectSearchString.type),
-            search_value: encodeURI(objectSearchString.value)
+            search_type: encodeURI(data.type),
+            search_value: encodeURI(data.value)
           }
         })
     },

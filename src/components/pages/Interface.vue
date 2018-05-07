@@ -27,7 +27,9 @@
 				<!-- content -->
 				<section class="row">
 					<div class="col-md-12">
-						<router-view></router-view>
+						<transition name="fade">
+							<router-view></router-view>
+						</transition>
 					</div>
 				</section>
 			</div>

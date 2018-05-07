@@ -31,6 +31,12 @@ export default {
   components: {
     SearchTransaction,
     SearchTransactionResult
+  },
+
+  mounted () {
+    // caso existir os parametros de query, informar na store[searchtransaction]
+    this.$route.params.search_type ? this.$store.commit('searchtransaction/addType', this.$route.params.search_type) : false
+    this.$route.params.search_value ? this.$store.commit('searchtransaction/addValue', this.$route.params.search_value) : false
   }
 }
 </script>
