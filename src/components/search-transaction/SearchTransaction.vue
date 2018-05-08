@@ -108,12 +108,6 @@ export default {
       }
     },
   },
-
-  beforeDestroy () {
-    this.$store.commit('searchtransaction/addType', '')
-    this.$store.commit('searchtransaction/addValue', '')
-  },
-
   mounted () {
     let elPrice = $("#t_input_price")
     this.elPrice = elPrice

@@ -32,23 +32,55 @@ export default {
     SearchTransaction,
     SearchTransactionResult
   },
-
+  watch: {
+    /** 
+     * Listener com alvo no $route com ele consigo identificar a troca de rota neste componente
+     * 
+     * @param {object} to Rota para qual vai
+     * @param {object} from Rota para qual veio
+     */
+    $route (to, from) {
+      if (!this.isURLSearch()) this.clearURLSearch();
+      else this.updateURLParam();
+    }
+  },
   methods: {
-
     /** 
      * Verifica se existe parametros de consulta na URL
+     * 
      * @return {boolean}
      */
     isURLSearch () {
       return this.$route.params.search_type && this.$route.params.search_value
+    },
+
+    /** 
+     * Caso não existir parametros na url de consulta, limpar dados
+     * 
+     * @return {void}
+     */
+    clearURLSearch () {
+      // limpa state de consulta
+      this.$store.commit('searchtransaction/addType', '');
+      this.$store.commit('searchtransaction/addValue', '');
+    },
+
+    /** 
+     * Atualiza a store com o tipo e valor dos parametros da rota
+     * 
+     * @return {void}
+     */
+    updateURLParam () {
+      this.$store.commit('searchtransaction/addType', this.$route.params.search_type);
+      this.$store.commit('searchtransaction/addValue', this.$route.params.search_value);
     }
   },
-
   mounted () {
-    if (this.isURLSearch()) {
-      this.$store.commit('searchtransaction/addType', this.$route.params.search_type)
-      this.$store.commit('searchtransaction/addValue', this.$route.params.search_value)
-    }
+    if (this.isURLSearch()) this.updateURLParam();
+    else this.clearURLSearch();
+  },
+  beforeDestroy () {
+    this.clearURLSearch();
   }
 }
 </script>
