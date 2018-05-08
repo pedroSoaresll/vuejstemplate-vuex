@@ -31,6 +31,12 @@ export default {
     SearchOrderResult
   },
   watch: {
+    /** 
+     * Listener com alvo no $route com ele consigo identificar a troca de rota neste componente
+     * 
+     * @param {object} to Rota para qual vai
+     * @param {object} from Rota para qual veio
+     */
     $route (to, from) {
       if (!this.isURLSearch()) this.clearURLSearch();
       else this.updateURLParam();
