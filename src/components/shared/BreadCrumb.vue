@@ -13,8 +13,13 @@
 <script>
 export default {
 	computed: {
+		/** 
+		 * Listener na property items
+		 * 
+		 * @return {Object[]} 
+		 */
 		items () {
-			let listPaths =  this.$store.getters['breadcrumb/paths']
+			let listPaths = this.$store.getters['breadcrumb/paths']
 			return listPaths.length ? listPaths.map(path => path.getObject()) : []
 
 			// this.breadCrumb = [{

@@ -24,9 +24,13 @@ export default {
     elInput: null
   }),
   methods: {
+    /** 
+     * Quando mudar a opção de seleção
+     * 
+     * @param {string} value valor da opção selecionada
+     * @return {void}
+     */
     onChange (value) {
-      
-
       this.elSelect.classList.remove('not-null')
 
       if (value != null && value != "") {
@@ -35,8 +39,20 @@ export default {
       }
     },
 
+    /** 
+     * Listener de interação no campo de text
+     * 
+     * @param {string} value valor digitado até o momento
+     * @return {void}
+     */
     onInput (value) { if (value == '') this.$emit('clearsearch') },
 
+    /** 
+     * Envio do formulário
+     * 
+     * @param {event} event
+     * @return {void}
+     */
     onSubmit (event) {
       try {
         if (!this.searchSelect) {

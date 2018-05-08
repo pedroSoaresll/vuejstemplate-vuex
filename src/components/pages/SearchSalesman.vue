@@ -13,129 +13,78 @@
       </div>
     </div>
 
-    <div class="divider"></div>
-
-    <div class="row">
-      <div class="col-md-12" v-if="searchType !== '' && searchValue !== ''">
-        <!-- table here -->
-        <p-table v-on:clickItem="callbackClickPTableItem" :data="resultData" class="w-100"></p-table>
-      </div>
-    </div>
-
-    <div class="row" v-if="searchType !== '' && searchValue !== ''">
-      <div class="col-md-2">
-        <button-back></button-back>
-      </div>
-
-      <div class="col-md-10 d-flex justify-content-end">
-        <b-pagination size="md" :total-rows="pagination.totalRows" v-model="pagination.currentPage" :per-page="pagination.perPage"></b-pagination>
-      </div>
-    </div>
+    
+    <search-salesman-result />
   </div>  
 </template>
 
 <script>
 // components
 import SearchSalesman from '@/components/search-salesman/SearchSalesman'
-import PTable from '@/components/shared/PTable'
-import ButtonBack from '@/components/shared/ButtonBack'
+import SearchSalesmanResult from '@/components/search-salesman/SearchSalesmanResult'
 
 // models
 import Path from '@/models/Path'
 
-// mixins
-import storemixins from '@/mixins/StoreMixins'
-
 export default {
   components: {
     SearchSalesman,
-    PTable,
-    ButtonBack
+    SearchSalesmanResult
   },
-  mixins: [storemixins],
   data: () => ({
     searchSalesmanPath: null,
-    resultData: {
-      columnsName: ['ID Vendedor', 'CPF/CNPJ', 'Nome Fantasia', 'Razão Social', 'Responsável'],
-      rowsName: [
-        {
-          id: '0001',
-          cpfCnpj: '031.756.317-31',
-          nomeFantasia: 'Parque Aguas',
-          razaoSocial: 'Parque Aguas',
-          responsavel: 'Jbertina do Carmo Ton'
-        },
-        {
-          id: '0002',
-          cpfCnpj: '031.756.317-32',
-          nomeFantasia: 'Parque Aguas 2',
-          razaoSocial: 'Parque Aguas 2',
-          responsavel: 'Jbertina do Carmo Ton 2'
-        }
-      ]
-    },
-    pagination: {
-      currentPage: 1,
-      totalRows: 100,
-      perPage: 2
-    },
-    search_type: '',
-    search_value: ''
   }),
-  methods: {
-    /**
-     * callback click no item da tabela
+  watch: {
+    /** 
+     * Listener com alvo no $route com ele consigo identificar a troca de rota neste componente
      * 
-     * @param {string} data Json { id: 123 }
+     * @param {object} to Rota para qual vai
+     * @param {object} from Rota para qual veio
      */
-    callbackClickPTableItem (data) {
-      // console.log(`Evento do PTable:`, data)
-      this.$router.push({ name: 'Detalhe', params: {
-          id_detail: data.id
-        }
-      })
+    $route (to, from) {
+      if (!this.isURLSearch()) this.clearURLSearch();
+      else this.updateURLParam();
+    }
+  },
+  methods: {
+    /** 
+     * Verifica se existe parametros de consulta na URL
+     * 
+     * @return {boolean}
+     */
+    isURLSearch () {
+      return this.$route.params.search_type && this.$route.params.search_value;
     },
 
     /** 
-      * Adiciona parametros de consulta na store searchsalesman
-      * @param {string} search_type
-      * @param {string} search_value
-      * @return {void}
+     * Caso não existir parametros na url de consulta, limpar dados
+     * 
+     * @return {void}
      */
-    addSearch (search_type, search_value) {
-      this.$route.params.search_type ? this.$store.commit('searchsalesman/addType', search_type) : false
-      this.$route.params.search_value ? this.$store.commit('searchsalesman/addValue', search_value) : false
+    clearURLSearch () {
+      // limpa state de consulta
+      this.$store.commit('searchsalesman/addType', '');
+      this.$store.commit('searchsalesman/addValue', '');
     },
 
-    /**
-      * Limpa os históricos de consulta
-      * @return {void}
-      */
-    clearSearch () {
-      this.$store.commit('searchsalesman/addType', '')
-      this.$store.commit('searchsalesman/addValue', '')
+    /** 
+     * Atualiza a store com o tipo e valor dos parametros da rota
+     * 
+     * @return {void}
+     */
+    updateURLParam () {
+      this.$store.commit('searchsalesman/addType', this.$route.params.search_type);
+      this.$store.commit('searchsalesman/addValue', this.$route.params.search_value);
     }
   },
 
-  computed: {
-    searchType () {
-      return this.$store.getters['searchsalesman/type']
-    },
-
-    searchValue () {
-      return this.$store.getters['searchsalesman/value']
-    }
-  },
-
-  created () {
-    const search_type =  this.$route.params.search_type;
-    const search_value = this.$route.params.search_value;
-
-    this.addSearch(search_type, search_value)
+  mounted () {
+    if (this.isURLSearch()) this.updateURLParam();
+    else this.clearURLSearch();
   },
 
   beforeDestroy () {
-    this.clearSearch()
+    this.clearURLSearch();
   }
 }
 </script>
