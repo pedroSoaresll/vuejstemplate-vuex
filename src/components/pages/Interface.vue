@@ -60,14 +60,6 @@ export default {
 	beforeRouteUpdate (to, from, next) {
 		// console.log('route to: ', to)
 		// console.log('route from', from)
-
-		// const toPath = new Path(to.name, to.path)
-		// const fromPath = new Path(from.name, from.path)
-
-		// console.log(toPath)
-		// console.log(fromPath)
-
-		// this.$store.commit('breadcrumb/add', toPath)
 		
 		return next()
 	},

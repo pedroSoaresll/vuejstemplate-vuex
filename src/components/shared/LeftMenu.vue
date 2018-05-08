@@ -40,7 +40,7 @@ export default {
       {
         name: "Pedidos",
         link: "/pedidos",
-        linkName: "AdminPedidos",
+        linkName: "Pedidos",
         activated: false
       },
       {

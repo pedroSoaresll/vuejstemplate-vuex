@@ -99,6 +99,10 @@ export default {
 
       try {
         if (!values.length) throw Error("Opções de filtro detalhado vazio")
+
+        // logic to detailed filter
+        // ...
+        
       } catch (e) {
         console.error(e.message)
       }

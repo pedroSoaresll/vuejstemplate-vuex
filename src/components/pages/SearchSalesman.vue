@@ -134,7 +134,7 @@ export default {
     this.addSearch(search_type, search_value)
   },
 
-  destroyed () {
+  beforeDestroy () {
     this.clearSearch()
   }
 }

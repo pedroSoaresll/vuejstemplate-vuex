@@ -40,9 +40,9 @@ export default new Router({
           component: SearchSalesmanPage,
         },
         {
-          path: '/pesquisa-vendedores/documento/:id_detail',
+          path: '/pesquisa-vendedores/:id_detail/documento',
           name: 'Detalhe',
-          component: DocumentDetailPage
+          component: DocumentDetailPage,
         },
 
         // pesquisa por transações na maquininha
@@ -57,7 +57,7 @@ export default new Router({
           component: SearchMachineTransaction
         },
         {
-          path: '/transacoes-na-maquininha/referencia/:id/detalhe',
+          path: '/transacoes-na-maquininha/:id/detalhe',
           name: 'TransacoesMaquininhaDetalhe',
           component: TransactionMachineDetail
         },
@@ -69,9 +69,19 @@ export default new Router({
 
         // pedido
         {
-          path: '/pedidos',
-          name: "AdminPedidos",
+          path: '/pesquisa-pedidos',
+          name: "Pedidos",
           component: SearchOrder
+        },
+        {
+          path: '/pesquisa-pedidos/:search_type,:search_value',
+          name: 'PedidosResult',
+          component: SearchOrder
+        },
+        {
+          path: '/pesquisa-pedidos/:id_detail/documento',
+          name: 'DetalhePedido',
+          component: DocumentDetailPage,
         },
 
         // taxas e tarifas

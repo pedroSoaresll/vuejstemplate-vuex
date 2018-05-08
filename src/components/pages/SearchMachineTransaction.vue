@@ -34,15 +34,6 @@ export default {
   },
 
   methods: {
-    /**
-      * Limpa os históricos de consulta
-      * @return {void}
-      */
-    clearSearch () {
-      console.log('paramtros limpados')
-      // this.$store.commit('searchtransaction/addType', '');
-      // this.$store.commit('searchtransaction/addValue', '');
-    },
 
     /** 
      * Verifica se existe parametros de consulta na URL
@@ -58,10 +49,6 @@ export default {
       this.$store.commit('searchtransaction/addType', this.$route.params.search_type)
       this.$store.commit('searchtransaction/addValue', this.$route.params.search_value)
     }
-  },
-
-  beforeDestroy () {
-    this.clearSearch()
   }
 }
 </script>
