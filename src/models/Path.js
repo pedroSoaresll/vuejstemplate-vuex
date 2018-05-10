@@ -1,3 +1,12 @@
+
+/**
+ * Cria uma objeto de path
+ * 
+ * @class Path
+ * @argument {string} name Path name
+ * @argument {string} href Path url
+ * @return {void}
+ */
 export default class Path {
   constructor (name, href) {
     this.name = name

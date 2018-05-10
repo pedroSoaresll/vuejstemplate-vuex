@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-md-8">
       <!-- search by salesman -->
       <Content title="Pesquisa por Vendedores" class="mb-4">
         <!-- content -->

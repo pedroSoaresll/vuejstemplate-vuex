@@ -7,9 +7,9 @@
     </div>
 
     <div class="row">
-      <div class="col-md-8 filtros-vendedores mb-3">
+      <div class="col-md-12 filtros-vendedores mb-3">
         <span class="text-specific-filter d-block mb-1">Filtros Específicos</span>
-        <search-salesman />
+        <search-salesman :showClearFilter="true" />
       </div>
     </div>
 

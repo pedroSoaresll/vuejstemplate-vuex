@@ -1,10 +1,12 @@
 <template>
   <div class="salesman-search-main">
-    <div class="row">
-      <div :class="{'col-md-8': showMore, 'col-md-12': !showMore}">
-        <search v-on:searchSubmit="searchSubmit" :options="options" v-on:clearsearch="clearResults" />
+    <!-- search -->
+    <search v-on:searchself="searchState" v-on:searchSubmit="searchSubmit" :options="options">
+      <!-- clear filter option -->
+      <div slot="clearSearch" v-if="showClearFilter">
+        <b-link @click="clearFilter" class="text-color-grey text-size-md">Limpar filtros</b-link>
       </div>
-    </div>
+    </search>
 
     <!-- pesquisa detalhada -->
     <b-form v-if="showMore" class="mt-4 row d-flex align-items-end" @submit.prevent="onSubmit">
@@ -53,7 +55,7 @@ export default {
   components: {
     Search
   },
-  props: ['showMore'],
+  props: ['showMore', 'showClearFilter'],
   data: () => ({
     options: [
       { value: null, text: 'Tipo de pesquisa' },
@@ -69,7 +71,8 @@ export default {
       status: '',
       valor: ''
     },
-    elPrice: null
+    elPrice: null,
+    searchComponent: null
   }),
   methods: {
     searchSubmit (data) {
@@ -107,6 +110,28 @@ export default {
         console.error(e.message)
       }
     },
+
+    /** 
+     * Dispara um evento para limpar os resultados
+     * Limpa os filtros e resultados selecionados pelo usuário 
+     * 
+     * @return {void}
+     */
+    clearFilter () {
+      this.$emit('clearInputSearch');
+      this.$router.push({name: 'TransacoesMaquininha'});
+      this.searchComponent.$refs.salesmanInput.$el.value = '';
+    },
+
+    /** 
+     * Armazena o stado do componente filho
+     * 
+     * @param {VueComponent} searchComponent
+     * @return {void}
+     */
+    searchState (searchComponent) {
+      this.searchComponent = searchComponent;
+    }
   },
   mounted () {
     let elPrice = $("#t_input_price")

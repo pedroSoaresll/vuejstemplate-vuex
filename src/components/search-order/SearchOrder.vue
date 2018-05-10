@@ -1,12 +1,16 @@
 <template>
   <div class="salesman-search-main">
-    <div class="row">
-      <div :class="{'col-md-8': showMore, 'col-md-12': !showMore}">
-        <search :self="this" :options="options" />
+    
+    <!-- search -->
+    <search v-on:searchself="searchState" v-on:searchSubmit="callbackSearch" :options="options">
+      <!-- clear filter option -->
+      <div slot="clearSearch" v-if="showClearFilter">
+        <b-link @click="clearFilter" class="text-color-grey text-size-md">Limpar filtros</b-link>
       </div>
-    </div>
+    </search>
 
-    <b-form v-if="showMore" class="mt-4 row d-flex align-items-end" @submit.prevent="onSubmit">
+    <!-- form de busca avançada -->
+    <b-form v-if="showMore" class="mt-4 d-flex align-items-end row" @submit.prevent="onSubmit">
       <!-- pedido -->
       <div class="col-md-2" role="group">
         <label for="t-pedido" class="color-grey">Pedido</label>
@@ -52,7 +56,7 @@ export default {
   components: {
     Search
   },
-  props: ['showMore'],
+  props: ['showMore', 'showClearFilter'],
   data: () => ({
     options: [
       { value: null, text: 'Tipo de pesquisa' },
@@ -68,11 +72,14 @@ export default {
       meioPagamento: '',
       status: '',
       canal: ''
-    }
+    },
+
+    searchComponent: null
   }),
   methods: {
     /** 
-     * Callback do search
+     * Callback do search.
+     * Assim que clicar no botão pesquisar este listener será ativado
      * 
      * @param {object} data
      * @return {void}
@@ -103,6 +110,28 @@ export default {
     onSubmit (event) {
       console.log('submit acionado!')
     },
+
+    /** 
+     * Dispara um evento para limpar os resultados
+     * Limpa os filtros e resultados selecionados pelo usuário 
+     * 
+     * @return {void}
+     */
+    clearFilter () {
+      this.$emit('clearInputSearch');
+      this.$router.push({name: 'Pedidos'});
+      this.searchComponent.$refs.salesmanInput.$el.value = '';
+    },
+
+    /** 
+     * Armazena o stado do componente filho
+     * 
+     * @param {VueComponent} searchComponent
+     * @return {void}
+     */
+    searchState (searchComponent) {
+      this.searchComponent = searchComponent;
+    }
   },
 }
 </script>

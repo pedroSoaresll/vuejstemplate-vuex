@@ -1,44 +1,22 @@
 // functions
 function validatePath (state, path) {
-  if (!path.name) throw Error("Deve informar {name}")
-  if (!path.href) throw Error("Deve informar {href}")
+  
 }
 
 function setActiveFalse (listPaths) {
-  return listPaths.map(path => {
-    path.active = false
-    return path
-  })
+  
 }
 
 function sortPaths (listPaths) {
-  return listPaths.map((path, index) => {
-    path.nivel = (index - listPaths.length) + 1
-
-    return path
-  })
+  
 }
 
 function exists (state, path) {
-  const existPath = state.paths.filter(statePath => statePath.name == path.name)
-  return new Boolean(existPath.length).valueOf()
+  
 }
 
 function remove (state, classPath) {
-  let index = 0
-
-  // console.log('procurando..')
-  // console.log(path)
-  // console.log(classPath)
-  // console.log(index)
-  // console.log(state.paths.length)
-
-  const a = state.paths.map((path, index) => {
-    if (index !== 0) return false
-    if (path.name == classPath.name) index = 1
-    
-    return path
-  })
+  
 }
 
 
